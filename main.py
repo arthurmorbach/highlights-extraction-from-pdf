@@ -6,6 +6,7 @@ def extract_highlights(pdf_path, output_txt_path):
 
     for page_num, page in enumerate(doc, start=1):  # Start page numbers at 1
         for annot in page.annots():
+            #needs to be fix, error when more than one highlight in the same column of the page.
             if annot.type[0] == 8:  # Check if annotation is a highlight
                 rect = annot.rect  # Get the bounding box of the annotation
                 text = page.get_text("text", clip=rect)  # Extract text inside highlight
